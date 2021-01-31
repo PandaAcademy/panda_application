@@ -1,0 +1,5 @@
+---
+repository_url: http://192.168.44.44:8081/artifactory/libs-snapshot-local
+username: admin
+password: pandapass
+artifact_name: ./application.jar

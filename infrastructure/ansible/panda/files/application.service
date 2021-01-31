@@ -1,0 +1,8 @@
+[Unit] 
+Description=Application
+
+[Service]
+ExecStart=/usr/bin/java -jar /home/ubuntu/application.jar
+
+[Install] 
+WantedBy=multi-user.target

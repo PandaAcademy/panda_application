@@ -1,0 +1,27 @@
+---
+- hosts: local
+  connection: local  
+  tasks:
+  - name: Install lxml requirements
+    become: true
+    apt:
+      pkg:
+        - python-dev
+        - libxml2
+        - libxml2-dev
+        - libxslt1-dev
+        - lib32z1-dev
+        - libssl-dev
+        - zlib1g-dev
+        - python3-pip
+   
+  - name: install lxml
+    command: "pip3 install lxml"
+    environment:
+        CFLAGS: "-O0"
+  
+- hosts: aws
+  roles:
+   - panda
+      
+
