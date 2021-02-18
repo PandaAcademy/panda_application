@@ -9,5 +9,4 @@ public class PandaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PandaApplication.class, args);
 	}
-
 }
