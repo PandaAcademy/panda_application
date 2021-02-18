@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -12,7 +11,7 @@
   </parent>
   <groupId>pl.pandait</groupId>
   <artifactId>panda</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>panda</name>
   <description>Demo project for Spring Boot</description>
 
@@ -29,14 +28,12 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -48,7 +45,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
@@ -62,25 +58,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.19.1</version>
-        <configuration>
-          <includes>
-            <include>HelloControllerTest.java</include>
-            <include>PandaApplicationTest.java</include>
-          </includes>
-        </configuration>
-        <dependencies>
-          <!-- let surefire run JUnit 4 but also JUnit 5 tests -->
-          <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>1.1.0</version>
-          </dependency>
-        </dependencies>
-      </plugin>
     </plugins>
   </build>
 
@@ -92,7 +69,7 @@
           <plugin>
             <groupId>com.spotify</groupId>
             <artifactId>dockerfile-maven-plugin</artifactId>
-            <version>1.4.0</version>
+            <version>1.4.13</version>
             <executions>
               <execution>
                 <id>default</id>
@@ -109,36 +86,10 @@
                 <JAR_FILE>target/${project.artifactId}-${project.version}.jar</JAR_FILE>
               </buildArgs>
             </configuration>
-            <dependencies>
-              <dependency>
-                <groupId>javax.activation</groupId>
-                <artifactId>activation</artifactId>
-                <version>1.1.1</version>
-              </dependency>
-            </dependencies>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-    <profile>
-      <id>selenium</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.19.1</version>
-            <configuration>
-              <includes>
-                <include>**.*SeleniumTest.java</include>
-              </includes>
-            </configuration>
           </plugin>
         </plugins>
       </build>
     </profile>
   </profiles>
-
 </project>
 
