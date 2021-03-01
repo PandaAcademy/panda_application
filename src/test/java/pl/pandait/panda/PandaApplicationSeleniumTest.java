@@ -1,5 +1,9 @@
 package pl.pandait.panda;
 
+import java.net.URL;
+import java.net.MalformedURLException;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,23 +22,23 @@ public class PandaApplicationSeleniumTest {
 
     private static WebDriver driver;
 
-    @LocalServerPort
-    private int port;
+     @LocalServerPort
+     private int port;
 
     @BeforeEach
-    public void startup() throws InterruptedException {
+    public void startup() throws InterruptedException, MalformedURLException {
 
-        //Driver znajduje się w resource
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver");
-        //Ścieżka do Firefoxa - jeżeli nie działa trzeba sprawdzić, gdzie FF jest zainstalowany!
-        System.setProperty("webdriver.firefox.bin", "/usr/lib/firefox/firefox");
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setPlatform(Platform.LINUX);
 
-        FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--headless");
-        driver = new FirefoxDriver(options);
+        // Odwołujemy się do zdalnego silnika Firefox z Selenium Grid
+        driver = new RemoteWebDriver(new URL("http://192.168.44.44:4444/wd/hub"), capabilities);
 
         // Pamiętaj, że aplikacja Spring musi działać!
-        driver.get(String.format("http://192.168.44.44:%s", port));
+        driver.get(String.format("http://jenkinscompose:%s", port));
+        
+        // Alternatywnie, gdyby DNS dockera nie komunikował się poprawnie
+        // driver.get(String.format("http://192.168.44.44:%s", port));
 
         //Czekamy 2 sekundy
         Thread.sleep(2000);
