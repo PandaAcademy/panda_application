@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class HelloControllerTest{
 
-    MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @BeforeEach
     public void beforeSetUp(){
@@ -25,5 +25,4 @@ public class HelloControllerTest{
             .andExpect(status().isOk())
             .andExpect(model().attribute("name", "Panda"));
     }
-    
 }
