@@ -15,7 +15,6 @@ pipeline {
         ANSIBLE = tool name: 'Ansible', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
     }
     
-    }
     options {
         withCredentials(awsCredentials)
     }
