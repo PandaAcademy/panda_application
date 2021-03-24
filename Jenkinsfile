@@ -1,3 +1,5 @@
+def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-personal']]
+
 pipeline {
     agent {
         label 'Slave'
@@ -11,6 +13,11 @@ pipeline {
         IMAGE = readMavenPom().getArtifactId()
         VERSION = readMavenPom().getVersion()
         ANSIBLE = tool name: 'Ansible', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
+    }
+    
+    }
+    options {
+        withCredentials(awsCredentials)
     }
   
     stages {
