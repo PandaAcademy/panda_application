@@ -1,3 +1,3 @@
-security_group = "sg-66c6eb1d"
+security_group = "sg-013ec63a"
 aws_key_name = "panda"
 ssh_key_path= "../panda.pem"
