@@ -14,13 +14,6 @@ resource "aws_instance" "panda" {
     private_key = file(var.ssh_key_path)
   }
 
-  provisioner "remote-exec" {
-    inline = [
-      "echo \"Hello, World ${self.public_ip}\" > index.html",
-      "nohup busybox httpd -f -p 8080 &",
-      "sleep 1",
-    ]
-  }
 }
 
 resource "aws_security_group" "sg-pub" {
