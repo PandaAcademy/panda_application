@@ -11,15 +11,22 @@
   </parent>
   <groupId>pl.pandait</groupId>
   <artifactId>panda</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>panda</name>
   <description>Demo project for Spring Boot</description>
   <distributionManagement>
     <repository>
-      <id>ftp-repository</id>
-      <url>ftp://ftp.net4you.net/repository</url>
+      <id>artifactory</id>
+      <name>release</name>
+      <url>http://192.168.44.44:8081/artifactory/libs-release-local</url>
     </repository>
+    <snapshotRepository>
+      <id>artifactory</id>
+      <name>snapshots</name>
+      <url>http://192.168.44.44:8081/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
   </distributionManagement>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -52,6 +59,7 @@
       <version>3.141.59</version>
     </dependency>
   </dependencies>
+
   <build>
     <plugins>
       <plugin>
@@ -73,15 +81,24 @@
         </configuration>
         <inherited>false</inherited>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>pl.pandait.panda.PandaApplication</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
     </plugins>
-    <extensions>
-      <extension>
-        <groupId>org.apache.maven.wagon</groupId>
-        <artifactId>wagon-ftp</artifactId>
-        <version>3.4.1</version>
-      </extension>
-    </extensions>
   </build>
+
   <profiles>
     <profile>
       <id>selenium</id>
@@ -164,4 +181,3 @@
     </profile>
   </profiles>
 </project>
-
