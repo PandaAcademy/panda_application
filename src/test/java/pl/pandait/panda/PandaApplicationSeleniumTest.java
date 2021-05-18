@@ -36,10 +36,10 @@ public class PandaApplicationSeleniumTest {
         driver = new RemoteWebDriver(new URL("http://192.168.44.44:4444/wd/hub"), capabilities);
 
         // Pamiętaj, że aplikacja Spring musi działać!
-        driver.get(String.format("http://ubuntucompose:%s/", port));
+        // driver.get(String.format("http://ubuntucompose:%s/", port));
         
         // Alternatywnie, gdyby DNS dockera nie komunikował się poprawnie
-        // driver.get(String.format("http://192.168.44.44:%s", port));
+        driver.get(String.format("http://jenkins:%s", port));
 
         //Czekamy 2 sekundy
         Thread.sleep(2000);
