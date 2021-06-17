@@ -1,5 +1,3 @@
-def awsCredentials = [[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-personal']]
-
 pipeline {
     agent {
         label 'Slave'
