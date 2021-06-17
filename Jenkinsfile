@@ -12,10 +12,6 @@ pipeline {
         VERSION = readMavenPom().getVersion()
         ANSIBLE = tool name: 'Ansible', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
     }
-    
-    options {
-        withCredentials(awsCredentials)
-    }
   
     stages {
         stage('Clear running apps') {
